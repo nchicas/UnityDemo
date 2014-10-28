@@ -9,8 +9,7 @@ public class BouncingBall : MonoBehaviour {
 	}
 	
 	public State state;
-
-	// Use this for initialization
+	
 	void Start () {
 		Game.OnShootFinished += OnShootFinished;
 	}
@@ -18,7 +17,7 @@ public class BouncingBall : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) {
 		if(collision.gameObject.tag == "BulletBall") {
 			state = State.Touched;
-			renderer.sharedMaterial = renderer.materials[0];
+			GetComponent<Renderer>().sharedMaterial = GetComponent<Renderer>().materials[0];
 		}
 		
 	}

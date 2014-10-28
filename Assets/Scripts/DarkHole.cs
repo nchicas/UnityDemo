@@ -13,7 +13,7 @@ public class DarkHole : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) {
 		if(collision.gameObject.tag == "BulletBall" && !usingTunnel) {
 			tunnelHole.usingTunnel = true;
-			collision.gameObject.rigidbody.MovePosition(tunnelHole.transform.position);
+			collision.gameObject.GetComponent<Rigidbody>().MovePosition(tunnelHole.transform.position);
 		}
 	} 
 	

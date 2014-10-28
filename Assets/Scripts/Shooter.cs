@@ -31,16 +31,14 @@ public class Shooter : MonoBehaviour {
 			if(Input.GetTouch(0).phase == TouchPhase.Ended && aiming) {
 				aiming = false;
 				iTween.FadeTo(gameObject,0,1);
-				currentBall.rigidbody.isKinematic = false;
-				currentBall.rigidbody.AddForce(pointer.forward * shootStrength,ForceMode.Force);
+				currentBall.GetComponent<Rigidbody>().isKinematic = false;
+				currentBall.GetComponent<Rigidbody>().AddForce(pointer.forward * shootStrength,ForceMode.Force);
 				currentBall = null;
 			}		
 	
 		}
 		
-		#endif
-		
-		#if UNITY_EDITOR || UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX || UNITY_WEBPLAYER
+		#else
 		
 		if(aiming) {
 			Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -52,8 +50,8 @@ public class Shooter : MonoBehaviour {
 		if(Input.GetMouseButtonUp(0) && aiming) {
 			aiming = false;
 			iTween.FadeTo(gameObject,0,1);
-			currentBall.rigidbody.isKinematic = false;
-			currentBall.rigidbody.AddForce(pointer.forward * shootStrength,ForceMode.Force);
+			currentBall.GetComponent<Rigidbody>().isKinematic = false;
+			currentBall.GetComponent<Rigidbody>().AddForce(pointer.forward * shootStrength,ForceMode.Force);
 			currentBall = null;
 		}
 		
@@ -74,7 +72,7 @@ public class Shooter : MonoBehaviour {
 		iTween.FadeTo(gameObject,1,0.2f);
 		currentBall = Instantiate(Resources.Load("YellowBall")) as GameObject;
 		currentBall.transform.position = transform.position;
-		currentBall.rigidbody.isKinematic = true;
+		currentBall.GetComponent<Rigidbody>().isKinematic = true;
 	}
 	
 	void OnDestroy() {

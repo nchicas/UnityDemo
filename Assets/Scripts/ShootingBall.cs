@@ -5,14 +5,13 @@ public class ShootingBall : MonoBehaviour {
 
 	public enum State {
 		Idle,
-		Bouncing,
-		Dead
+		Bouncing
 	}
 	
 	public State state;
 	
 	void Update () {
-		if(state == State.Idle && rigidbody.velocity.magnitude >= 0.1f) {
+		if(state == State.Idle && GetComponent<Rigidbody>().velocity.magnitude >= 0.1f) {
 			state = State.Bouncing;
 		}
 		
